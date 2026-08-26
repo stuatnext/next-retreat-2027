@@ -47,13 +47,12 @@ partnerships sales contact.
 
 ## Judgement calls — worth a second opinion
 
-1. **LatAm dates: using 15–17 November 2027.** PLAN slide 1 says
+1. ~~**LatAm dates**~~ — **resolved, 26 Aug 2026.** PLAN slide 1 says
    "15 – 18 November 2027", but the same deck labels the format "3 days & 2
    nights" and its own day-by-day schedule (slide 5) runs 15 / 16 / 17 Nov.
-   The 2026 edition was 17–19 Nov, also three days. 15–17 is the internally
-   consistent reading; 15–18 looks like it includes a departure day or is a
-   typo. **Confirm before this goes to a client.** One-line change:
-   `DESTINATIONS.latam.dates` / `.datesTight` in `src/App.jsx`.
+   The 2026 edition was 17–19 Nov, also three days. **15–17 November 2027 is
+   confirmed correct** (Stuart); slide 1 is the error. If the deck is reissued,
+   slide 1 needs fixing rather than this repo.
 
 2. **Feedback scores are prior-edition, not 2026.** The scores shown are the
    "C-LEVEL FEEDBACK" panels from BR26 p7. The Cyprus panel's own question
