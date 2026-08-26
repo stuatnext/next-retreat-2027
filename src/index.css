@@ -55,24 +55,17 @@
 }
 
 @theme {
-  /* Deep-water ground */
-  --color-abyss: #03151f;
-  --color-deep: #062634;
-  --color-mid: #0a3a4d;
-  --color-ink: #041d29;
+  /* ── Official NEXT.io brand palette ──────────────────────────────────
+     Charcoal, yellow, white, grey. Nothing else is a brand colour. */
+  --color-brand-dark: #242426;
+  --color-brand-yellow: #ffcf33;
+  --color-brand-white: #ffffff;
+  --color-brand-gray: #bdbdbd;
 
-  /* Water */
-  --color-lagoon: #0f7b8a;
-  --color-aqua: #4fc9c6;
-  --color-aqua-bright: #7defe0;
-
-  /* Shore */
-  --color-sand: #e6d6b4;
-  --color-brass: #c9a44c;
-  --color-cream: #f5f0e4;
-
-  /* NEXT brand */
-  --color-next-gold: #ffcf33;
+  /* Charcoal, in depth steps for layering */
+  --color-ink: #1c1c1f;
+  --color-shell: #242426;
+  --color-raise: #2c2c30;
 
   --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
   --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
@@ -84,8 +77,8 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background-color: #03151f;
-    color: #f5f0e4;
+    background-color: #1c1c1f;
+    color: #ffffff;
     font-family: 'Jost', ui-sans-serif, system-ui, sans-serif;
     font-weight: 300;
     letter-spacing: 0.01em;
@@ -97,31 +90,33 @@
     font-feature-settings: 'lnum' 1;
   }
   ::selection {
-    background: #4fc9c6;
-    color: #03151f;
+    background: #ffcf33;
+    color: #242426;
   }
 }
 
 /* ── Destination themes ──────────────────────────────────────────────────
-   Every accent on the page reads from these variables, so switching
-   destination re-tints the whole document. */
+   The brand colours never change between retreats. What changes is the
+   water: --sea tints the caustics and the fine detail lines, so switching
+   destination shifts the atmosphere without touching the identity. */
 .theme-europe {
-  --accent: #45b6c9;
-  --accent-soft: #7fd4de;
-  --accent-deep: #0b5f74;
-  --accent-warm: #c9a44c;
-  --ground: #04202c;
-  --ground-2: #072d3c;
+  --sea: #3f9fb8;          /* Mediterranean, cooler */
+  --sea-soft: #7fc6d6;
+  --ground: #242426;
+  --ground-2: #2d2d31;
 }
 .theme-latam {
-  --accent: #22cfbb;
-  --accent-soft: #79ecdc;
-  --accent-deep: #0a6270;
-  --accent-warm: #e8a87c;
-  /* Caribbean, not jungle: keep the ground blue-leaning so the sea in the
-     photography stays turquoise rather than going olive under the overlay. */
-  --ground: #032530;
-  --ground-2: #063846;
+  --sea: #2ec2ad;          /* Caribbean, warmer */
+  --sea-soft: #6fddc9;
+  --ground: #242426;
+  --ground-2: #2d2d31;
+}
+
+/* Brand aliases used throughout components */
+.theme-europe, .theme-latam {
+  --accent: #ffcf33;
+  --accent-ink: #242426;
+  --line: rgba(255, 255, 255, 0.10);
 }
 
 /* ── Water & atmosphere ─────────────────────────────────────────────────── */
@@ -136,17 +131,18 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   }
 
+  /* Light moving on water, read over charcoal rather than replacing it */
   .caustics {
     position: absolute;
     inset: -20%;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.55;
     background:
-      radial-gradient(38% 26% at 18% 22%, color-mix(in oklab, var(--accent-soft) 34%, transparent) 0%, transparent 62%),
-      radial-gradient(30% 20% at 82% 12%, color-mix(in oklab, var(--accent) 26%, transparent) 0%, transparent 60%),
-      radial-gradient(46% 30% at 62% 78%, color-mix(in oklab, var(--accent-deep) 40%, transparent) 0%, transparent 66%),
-      radial-gradient(26% 18% at 32% 86%, color-mix(in oklab, var(--accent-warm) 16%, transparent) 0%, transparent 60%);
-    filter: blur(28px);
+      radial-gradient(38% 26% at 18% 22%, color-mix(in oklab, var(--sea) 26%, transparent) 0%, transparent 62%),
+      radial-gradient(30% 20% at 82% 12%, color-mix(in oklab, var(--sea-soft) 16%, transparent) 0%, transparent 60%),
+      radial-gradient(46% 30% at 62% 78%, color-mix(in oklab, var(--sea) 20%, transparent) 0%, transparent 66%),
+      radial-gradient(26% 18% at 34% 88%, color-mix(in oklab, var(--color-brand-yellow) 8%, transparent) 0%, transparent 58%);
+    filter: blur(34px);
     animation: drift 34s ease-in-out infinite alternate;
   }
 
@@ -161,7 +157,7 @@
     background-image: linear-gradient(
       100deg,
       transparent 20%,
-      color-mix(in oklab, var(--accent-soft) 55%, transparent) 45%,
+      color-mix(in oklab, var(--color-brand-yellow) 55%, transparent) 45%,
       transparent 70%
     );
     background-size: 260% 100%;
@@ -176,8 +172,8 @@
     background-image: linear-gradient(
       90deg,
       transparent,
-      color-mix(in oklab, var(--accent-warm) 55%, transparent) 12%,
-      color-mix(in oklab, var(--accent-warm) 55%, transparent) 88%,
+      color-mix(in oklab, var(--color-brand-yellow) 42%, transparent) 12%,
+      color-mix(in oklab, var(--color-brand-yellow) 42%, transparent) 88%,
       transparent
     );
   }
@@ -229,7 +225,7 @@
     mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
   }
   .edge-fade-x {
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent);
   }
 
   /* Cormorant defaults to old-style figures, which turn "01" into "OI" and
@@ -258,9 +254,27 @@
    above collapse to transparent, which is a graceful no-op. */
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #03151f; }
+::-webkit-scrollbar-track { background: #1c1c1f; }
 ::-webkit-scrollbar-thumb {
-  background: #0f4a58;
+  background: #3a3a3f;
   border-radius: 999px;
 }
-::-webkit-scrollbar-thumb:hover { background: #16697a; }
+::-webkit-scrollbar-thumb:hover { background: #ffcf33; }
+
+/* Page-wide atmosphere. Sits above the flat ground, below all content. */
+.atmosphere {
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    radial-gradient(30% 22% at 12% 14%, color-mix(in oklab, var(--sea) 22%, transparent) 0%, transparent 64%),
+    radial-gradient(26% 18% at 88% 34%, color-mix(in oklab, var(--sea-soft) 13%, transparent) 0%, transparent 62%),
+    radial-gradient(34% 24% at 44% 72%, color-mix(in oklab, var(--sea) 16%, transparent) 0%, transparent 66%),
+    radial-gradient(22% 16% at 76% 92%, color-mix(in oklab, var(--color-brand-yellow) 7%, transparent) 0%, transparent 60%);
+  filter: blur(60px);
+  animation: drift 52s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere { animation: none; }
+}

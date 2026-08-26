@@ -35,6 +35,9 @@ which, plus the judgement calls made where sources disagreed.
 | C-level feedback scores | BR26 p7 |
 | Job titles in the room | SNAP, confirmed attendees only, aggregated to titles |
 | Activity flavour per destination (wine tasting, buggies, cenotes, tequila, volleyball) | BR26 p6 |
+| Official NEXT.io RETREAT lockup | BR26 covers, extracted at 600 dpi |
+| Brand charcoal `#242426` and yellow `#ffcf33` | BR26 covers (sampled `#232425` / `#ffd033`), matching the tokens already used in the Summit repos |
+| The yellow chevron arrow device | BR26 covers, redrawn as inline SVG |
 
 ## Deliberately excluded
 
@@ -58,8 +61,8 @@ partnerships sales contact.
    "C-LEVEL FEEDBACK" panels from BR26 p7. The Cyprus panel's own question
    wording dates it to the **Retreat Europe 2024** edition ("…at the NEXT.io
    Retreat Europe 2024?", "…returning to the NEXT.io Retreat Europe 2025?").
-   The LatAm panel carries no year, so it is labelled "as published in the 2026
-   partner brochure" rather than given a year it may not have.
+   The LatAm panel carries no year, so the page labels it "most recent edition"
+   rather than asserting a year it may not have.
 
    The PLAN's KPI slides (9 and 10) also carry numbers like 9.2 and 9.8, but
    those are **targets** — each is annotated "to be reviewed after the event",
@@ -70,12 +73,12 @@ partnerships sales contact.
    `DESTINATIONS[x].feedback` with the real 2026 numbers and drop the
    prior-edition caveat from `feedback.source`.
 
-3. **"Fifty C-level guests, invited free."** The brochure states the delegate
+3. **"Fifty C-level guests attend on us."** The brochure states the delegate
    economics plainly — complimentary operators/affiliates/influencers are what
    the partner fee funds. This is a strength when selling to suppliers, and the
-   50/50 balance is already public in BR26, but the "invited free" framing is a
-   presentational choice rather than something the source documents say
-   outright. Change the copy in `TheRoom` if it should be softer.
+   50/50 balance is already public in BR26, but the framing is a presentational
+   choice rather than something the source documents say outright. Approved for
+   publication 26 Aug 2026; soften the copy in `TheRoom` if that changes.
 
 4. **Individual Ticket deliverables.** PLAN slide 7 gives only price,
    availability and "1 PASS" for this product. The bullet list in `PACKAGES`
