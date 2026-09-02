@@ -734,6 +734,40 @@ function Nav({ destId, setDestId, cartCount }) {
   )
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SeaWaves — drifting sea-tinted bands (atmosphere only, like the caustics)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+function wavePath(amp, y) {
+  let d = `M0 ${y}`
+  for (let x = 0; x < 2880; x += 360) {
+    d += ` C ${x + 90} ${y - amp}, ${x + 270} ${y + amp}, ${x + 360} ${y}`
+  }
+  return d + ' L2880 140 L0 140 Z'
+}
+
+function SeaWaves({ className = '' }) {
+  return (
+    <div aria-hidden className={`pointer-events-none h-[72px] sm:h-[110px] overflow-hidden ${className}`}>
+      {[
+        ['wave-track', 26, 58, 'var(--sea)', 0.16],
+        ['wave-track-2', 18, 74, 'var(--sea-soft)', 0.13],
+        ['wave-track-3', 30, 88, 'var(--sea)', 0.24],
+      ].map(([track, amp, y, fill, op]) => (
+        <svg
+          key={track}
+          viewBox="0 0 2880 140"
+          preserveAspectRatio="none"
+          className={`absolute bottom-0 left-0 h-full w-[200%] ${track}`}
+        >
+          <path d={wavePath(amp, y)} fill={fill} fillOpacity={op} />
+        </svg>
+      ))}
+    </div>
+  )
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    Hero
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -761,6 +795,7 @@ function Hero({ dest, destId, setDestId }) {
       </div>
 
       <div className="grain absolute inset-0" />
+      <SeaWaves className="absolute inset-x-0 bottom-0 z-[1] w-full" />
 
       <Shell className="relative flex-1 w-full flex flex-col justify-center pt-28 pb-14">
         <div className="reveal in">
@@ -1706,7 +1741,8 @@ function Partners2026() {
 
 function BothRetreats({ destId, setDestId }) {
   return (
-    <Section className="overflow-hidden">
+    <Section className="overflow-hidden !pt-0">
+      <SeaWaves className="relative mb-16 sm:mb-24" />
       <Shell>
         <SectionHead
           eyebrow="Two retreats, 2027"

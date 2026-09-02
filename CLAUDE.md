@@ -62,19 +62,30 @@ Confirm it prints `Published` before reporting done. Publishes to
 - **The chevron device** (`<Chevrons>`) is the official yellow arrow, redrawn as
   inline SVG so it scales and inherits `currentColor`. It belongs on flat
   charcoal only — over photography it fights the subject.
-- **Fonts are self-hosted** in `src/fonts/` (Cormorant Garamond + Jost, both
-  variable, latin + latin-ext). No Google Fonts request at runtime — this gets
-  opened on conference wifi. Vite hashes and rewrites the URLs, so keep the
-  `@font-face` `url()` paths relative.
-- Cormorant defaults to **old-style figures**, which renders `01` as `OI` and
-  makes prices look like lowercase text. The `.num` class and `.font-display`
-  force lining figures — put `num` on anything numeric.
+- **Fonts are self-hosted** in `src/fonts/` (Jost only, variable,
+  latin + latin-ext). No Google Fonts request at runtime — this gets opened
+  on conference wifi. Vite hashes and rewrites the URLs, so keep the
+  `@font-face` `url()` paths relative. The Cormorant serif face was retired
+  on Stuart's instruction (2 Sep 2026): display headlines are Jost light —
+  keep the page serif-free. Jost has no italic file; italics render as
+  synthesised oblique, which is fine at quote sizes.
+- The `.num` class stays as a lining-figures guarantee on anything numeric
+  (harmless under Jost, which is lining by default).
+- **The wave device** (`<SeaWaves>`) is three drifting sine bands tinted by
+  `--sea`/`--sea-soft` — atmosphere only, same rule as the caustics. It sits
+  on the hero's bottom edge and as the divider into the both-retreats
+  spread. Base component sets no `position`; pass `absolute`/`relative`
+  placement per use (Tailwind class order does not resolve the conflict).
 - **Attendee logos** live in `public/logos/attendees/{cyprus,latam}/`, extracted
   from the official 2026 partner brochures and trimmed to their content box.
   The logo wall normalises them to white silhouettes with
   `[filter:brightness(0)_invert(1)] mix-blend-screen`, so a logo with a baked-in
   white background will render as a solid white block — knock the white out to
-  transparent before adding one.
+  transparent before adding one. The same failure hits outline-style logos
+  whose letterforms are white fills inside a dark outline (1win, betjara):
+  the filter merges fill and outline into one blob. Fix: make the near-white
+  fill pixels transparent so the letters survive as counters — done for both
+  on 2 Sep 2026.
 - **Photography** in `public/images/` is real event and resort photography from
   the 2026 brochures. Several sources are small (720–800px wide); they are used
   in cards rather than full-bleed heroes for that reason. The two heroes

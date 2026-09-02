@@ -3,40 +3,10 @@
 /* ── Self-hosted variable webfonts ───────────────────────────────────────
    Bundled rather than pulled from a CDN: this brochure gets opened on
    conference and hotel wifi, and the type is the design. One file per
-   family/style/subset — both faces are variable across their weight range. */
+   subset — Jost is variable across its weight range and carries the whole
+   page: display headlines are Jost light with generous tracking (the serif
+   face was retired 2 Sep 2026). */
 
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./fonts/cormorant-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./fonts/cormorant-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: italic;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./fonts/cormorant-italic-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: italic;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./fonts/cormorant-italic-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 @font-face {
   font-family: 'Jost';
   font-style: normal;
@@ -67,7 +37,7 @@
   --color-shell: #242426;
   --color-raise: #2c2c30;
 
-  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-display: 'Jost', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -228,9 +198,9 @@
     mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent);
   }
 
-  /* Cormorant defaults to old-style figures, which turn "01" into "OI" and
-     make prices look like lowercase letters. Force lining figures wherever a
-     number carries meaning. */
+  /* Jost uses lining figures by default; .num stays as a guarantee (tabular
+     lining figures wherever a number carries meaning) and so existing markup
+     keeps working. */
   .num {
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: 'lnum' 1, 'tnum' 1;
@@ -246,6 +216,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .caustics, .shimmer, .rail, .rail-slow { animation: none !important; }
+  .wave-track, .wave-track-2, .wave-track-3 { animation: none !important; }
   .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
@@ -278,3 +249,14 @@
 @media (prefers-reduced-motion: reduce) {
   .atmosphere { animation: none; }
 }
+
+/* ── The wave device ─────────────────────────────────────────────────────────
+   Three drifting sine bands tinted by --sea / --sea-soft. Pure atmosphere,
+   like the caustics: never a data bar, a border or type. */
+@keyframes waveDrift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.wave-track   { animation: waveDrift 34s linear infinite; }
+.wave-track-2 { animation: waveDrift 52s linear infinite reverse; }
+.wave-track-3 { animation: waveDrift 21s linear infinite; }
