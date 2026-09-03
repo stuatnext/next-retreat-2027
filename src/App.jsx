@@ -59,10 +59,10 @@ const DESTINATIONS = {
     target: [
       { n: 35, label: 'Operators', note: '15 operators · 20 crypto operators' },
       { n: 10, label: 'Affiliates', note: 'European affiliate leadership' },
-      { n: 5, label: 'Advisory board & influencers', note: 'Nominated, not applied' },
+      { n: 5, label: 'Influencers', note: 'Nominated, not applied' },
     ],
     feedback: {
-      source: 'C-level delegate survey · NEXT Retreat Europe 2024',
+      source: 'C-level delegate survey · most recent surveyed edition',
       headline: { score: '9.32', label: 'Would recommend to an industry friend' },
       rows: [
         ['Would recommend to an industry friend', '9.32'],
@@ -107,7 +107,7 @@ const DESTINATIONS = {
     activities: {
       'yacht-golf': {
         title: 'Golf or padel tournament, or a day on the water',
-        blurb: 'The flagship leisure slot. A tournament on the Cap St Georges course or a boat day along the Akamas coast — your brand hosts it end to end.',
+        blurb: 'The flagship leisure slot. A golf or padel tournament, or a boat day along the Akamas coast — your brand hosts it end to end.',
         imgs: [{ src: 'images/cyprus-padel.jpg', alt: 'Padel tournament at Cap St Georges' }],
       },
       tasting: {
@@ -120,7 +120,7 @@ const DESTINATIONS = {
       },
       pool: {
         title: 'Sport and slow hours by the pool',
-        blurb: 'The most relaxed real estate at the retreat. Poolside sessions, padel, sunrise swims — branded, hosted and impossible to walk past.',
+        blurb: 'The most relaxed real estate at the retreat. Poolside sessions, morning movement, sunrise swims — branded, hosted and impossible to walk past.',
         imgs: [],
       },
     },
@@ -132,7 +132,7 @@ const DESTINATIONS = {
     tag: 'LatAm',
     flag: '🇲🇽',
     place: 'Cancún, Mexico',
-    coverLine: 'CANCUN · 15–17 NOVEMBER, 2027',
+    coverLine: 'CANCÚN · 15–17 NOVEMBER, 2027',
     venue: 'Secrets Maroma Beach Riviera Cancun',
     venueShort: 'Secrets Maroma Beach',
     // The 2027 plan's summary slide reads 15–18; its own day-by-day schedule
@@ -155,10 +155,10 @@ const DESTINATIONS = {
     target: [
       { n: 30, label: 'Operators', note: 'LatAm operator leadership' },
       { n: 10, label: 'Affiliates', note: 'Mexico, Brazil, Colombia, Peru, Chile' },
-      { n: 10, label: 'Advisory board & influencers', note: 'Nominated, not applied' },
+      { n: 10, label: 'Influencers', note: 'Nominated, not applied' },
     ],
     feedback: {
-      source: 'C-level delegate survey · NEXT Retreat LatAm, most recent edition',
+      source: 'C-level delegate survey · most recent surveyed edition',
       headline: { score: '9.90', label: 'Likelihood of returning' },
       rows: [
         ['Likelihood of returning', '9.90'],
@@ -200,7 +200,7 @@ const DESTINATIONS = {
     days: [
       {
         n: 1, date: 'Monday 15 November',
-        items: ['Delegates check in', 'Golf tournament or boat day (if sold)', 'Welcome reception'],
+        items: ['Delegates check in', 'Yacht day (if sold)', 'Welcome reception'],
       },
       {
         n: 2, date: 'Tuesday 16 November',
@@ -327,7 +327,7 @@ const SELECTION = [
 const POSITIONING = [
   {
     title: 'The most valuable room in iGaming',
-    body: '100 C-level leaders at an exact 50 operators / 50 suppliers balance. Deal-making, not networking.',
+    body: '100 senior leaders at an exact 50 operators / 50 suppliers balance. Deal-making, not networking.',
     icon: Handshake,
   },
   {
@@ -473,6 +473,7 @@ function Shell({ children, className = '' }) {
 function useCountdown(iso) {
   const [left, setLeft] = useState(() => Math.max(0, new Date(iso) - new Date()))
   useEffect(() => {
+    setLeft(Math.max(0, new Date(iso) - new Date()))
     const t = setInterval(() => setLeft(Math.max(0, new Date(iso) - new Date())), 60000)
     return () => clearInterval(t)
   }, [iso])
@@ -1747,7 +1748,7 @@ function BothRetreats({ destId, setDestId }) {
         <SectionHead
           eyebrow="Two retreats, 2027"
           title="Do one. Or do the year."
-          lede="One product set, two rooms, six weeks apart. Partners who take both get the same brand in front of Europe and LatAm inside a single financial year."
+          lede="One product set, two rooms, five weeks apart. Partners who take both get the same brand in front of Europe and LatAm inside a single financial year."
         />
 
         <div className="mt-14 sm:mt-20 grid md:grid-cols-2 gap-px bg-white/10">
@@ -1839,7 +1840,7 @@ function Close({ dest }) {
             </a>
           </div>
           <p className="mt-10 font-sans text-[12px] font-light text-white/40">
-            Partnerships · William Purchase, Partnerships Sales
+            Partnerships · William Purchase, Sales Director
           </p>
         </div>
       </Shell>

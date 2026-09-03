@@ -96,3 +96,25 @@ partnerships sales contact.
    `betjara` and `betsw` are best-guess filenames for marks whose wordmarks are
    hard to resolve at source resolution. The images are correct; only the
    filenames and `alt` text are a guess.
+
+## Will's collateral check (3 Sep 2026) - retreat items applied
+
+- "Six weeks apart" corrected to five (11-13 Oct to 15-17 Nov is 33 days).
+- Footer countdown now recomputes immediately on destination switch (it
+  previously waited for the next minute tick, so it looked unbound).
+- The per-destination complimentary breakdown's third slice is relabelled
+  "Influencers": PLAN slide 6 treats the advisory board as the separate 5
+  in the delegate build (50 comp + 24 partner + 21 individual + 5 advisory),
+  so listing "Advisory board & influencers" inside the 50 double-counted it.
+- Survey source lines both read "most recent surveyed edition" (Europe's
+  latest is the 2024 survey per BR26; the 2026-survey replacement action
+  above still stands).
+- "100 C-level leaders" softened to "100 senior leaders" (the room is 83%
+  C-level per SENIORITY).
+- Padel overlap resolved (flagship slot keeps golf/padel/boat; the pool slot
+  no longer lists padel); the "Cap St Georges course" claim dropped pending
+  confirmation the resort has its own course; LatAm day one reads "Yacht
+  day" to match its leisure set.
+- Will's footer title corrected to Sales Director. Cancún accented on the
+  cover line (the resort name "Secrets Maroma Beach Riviera Cancun" keeps
+  its official unaccented spelling).
